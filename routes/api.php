@@ -12,5 +12,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::resource('/Destinations',DestinationController::class);
+Route::get('/Destinations',[DestinationController::class,'index'])->name('destinations.index');
+Route::get('/DestinationsComments',[DestinationController::class,'DestinationsComments'])->name('destinationscomments.index');
+
 
