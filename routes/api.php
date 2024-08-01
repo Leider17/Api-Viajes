@@ -13,6 +13,10 @@ Route::get('/user', function (Request $request) {
 
 
 Route::get('/Destinations',[DestinationController::class,'index'])->name('destinations.index');
+Route::get('Destinations/{destination}',[DestinationController::class,'show'])->name('destinations.show');
 Route::get('/DestinationsComments',[DestinationController::class,'DestinationsComments'])->name('destinationscomments.index');
+Route::get('/DestinationsComments/{destination}',[DestinationController::class,'DestinationComments'])->name('destinationscomments.show');
+Route::get('/DestinationsHotels',[DestinationController::class,'DestinationsHotels'])->name('destinationshotels.index');
+Route::get('/DestinationsHotels/{destination}',[DestinationController::class,'DestinationHotels'])->name('destinationshotels.show');
 
 

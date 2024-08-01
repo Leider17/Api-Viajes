@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Comment;
-use app\Models\Activity;
-use app\Models\Reservation;
-use app\Models\Hotel;
+use App\Models\Activity;
+use App\Models\Reservation;
+use App\Models\Hotel;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Destination extends Model
@@ -34,7 +34,7 @@ class Destination extends Model
         return $this->hasMany(Reservation::class);
     }
 
-    public function hotels(){
+    public function hotels():HasMany{
         return $this->hasMany(Hotel::class);
     }
 }
