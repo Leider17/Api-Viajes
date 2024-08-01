@@ -34,6 +34,23 @@ class DestinationTest extends TestCase
         ])->assertJsonCount(20);
     }
 
+    public function test_list_destination():void
+    {
+        Artisan::call('migrate:reset');
+        Artisan::call('migrate');
+        Artisan::call('db:seed');
+        $response = $this->get('/api/Destinations/1');
+        $response->assertStatus(200)->assertJsonStructure([
+                'id',
+                'name',
+                'country',
+                'description',
+                'image',
+                'created_at',
+                'updated_at'
+        ]);
+    }
+
     public function test_list_all_destinations_comments(): void
     {
         Artisan::call('migrate:reset');
@@ -58,5 +75,77 @@ class DestinationTest extends TestCase
                 ]
             ]
         ]);
+    }
+
+    public function test_list_destination_comments():void{
+        Artisan::call('migrate:reset');
+        Artisan::call('migrate');
+        Artisan::call('db:seed');
+
+        $response = $this->get('/api/DestinationsComments/1');
+        $response->assertStatus(200)->assertJsonStructure([
+                'id',
+                'name',
+                'country',
+                'description',
+                'image',
+                'comments' => [
+                    '*' => [
+                        'id',
+                        'content',
+                        'user_id',
+                        'name_user',
+                    ]
+                ]
+                    ]);
+    }
+
+    public function test_list_all_destinations_hotels():void{
+        
+        Artisan::call('migrate:reset');
+        Artisan::call('migrate');
+        Artisan::call('db:seed');
+
+        $response = $this->get('/api/DestinationsHotels');
+        $response->assertStatus(200)->assertJsonStructure([
+            '*' => [
+                'id',
+                'name',
+                'country',
+                'description',
+                'image',
+                'hotels' => [
+                    '*' => [
+                        'id',
+                        'name',
+                        'address',
+                        'price_night'
+                    ]
+                ]
+            ]
+        ]);
+    }
+
+    public function test_list_destination_hotels():void{
+        Artisan::call('migrate:reset');
+        Artisan::call('migrate');
+        Artisan::call('db:seed');
+
+        $response = $this->get('/api/DestinationsHotels/1');
+        $response->assertStatus(200)->assertJsonStructure([
+                'id',
+                'name',
+                'country',
+                'description',
+                'image',
+                'hotels' => [
+                    '*' => [
+                        'id',
+                        'name',
+                        'address',
+                        'price_night'
+                    ]
+                ]
+                    ]);
     }
 }
