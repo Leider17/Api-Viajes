@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('type');
-            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('destination_id');
         });
     }

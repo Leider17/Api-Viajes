@@ -15,8 +15,7 @@ class Activity extends Model
         'name',
         'description',
         'type',
-        'user_id',
-        'destination_id',
+        'destination_id'
     ];
 
     public function destination(): BelongsTo
