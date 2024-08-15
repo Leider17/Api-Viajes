@@ -18,5 +18,7 @@ Route::get('/DestinationsComments',[DestinationController::class,'DestinationsCo
 Route::get('/DestinationsComments/{destination}',[DestinationController::class,'DestinationComments'])->name('destinationscomments.show');
 Route::get('/DestinationsHotels',[DestinationController::class,'DestinationsHotels'])->name('destinationshotels.index');
 Route::get('/DestinationsHotels/{destination}',[DestinationController::class,'DestinationHotels'])->name('destinationshotels.show');
+Route::get('/DestinationsActivities',[DestinationController::class,'DestinationsActivities'])->name('destinationsactivities.index');
+Route::get('/DestinationsActivities/{destination}',[DestinationController::class,'DestinationActivities'])->name('destinationsactivities.show');
 
 
