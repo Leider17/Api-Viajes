@@ -21,4 +21,5 @@ Route::get('/DestinationsHotels/{destination}',[DestinationController::class,'De
 Route::get('/DestinationsActivities',[DestinationController::class,'DestinationsActivities'])->name('destinationsactivities.index');
 Route::get('/DestinationsActivities/{destination}',[DestinationController::class,'DestinationActivities'])->name('destinationsactivities.show');
 
+Route::put('/Destinations/{destination}',[DestinationController::class,'update'])->name('destinations.update');
 

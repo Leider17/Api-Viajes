@@ -11,6 +11,7 @@ use Illuminate\Http\JsonResponse;
 use App\Models\Destination;
 
 
+
 class DestinationController extends Controller
 {
     public function index():JsonResponse{
@@ -53,15 +54,18 @@ class DestinationController extends Controller
         );
     }
 
-    public function show($id){
+    public function show($id):JsonResponse{
         $destination = Destination::find($id);
         return response()->json(
             $destination,200
         );
     }
 
-    public function update(){
+    public function update($id,DestinationRequest $request):JsonResponse{
+        $destination = Destination::find($id);
+        $destination->update($request->all());
 
+        return response()->json(['success'=>true],200);
     }
 
     public function destroy(){
