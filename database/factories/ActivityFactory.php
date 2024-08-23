@@ -22,7 +22,6 @@ class ActivityFactory extends Factory
             'name' => fake()->word(),
             'description' => fake()->sentence(),
             'type' => fake()->randomElement(['tour', 'activity', 'restaurant']),
-            'user_id' => User::all()->random()->id,
             'destination_id' => Destination::all()->random()->id
         ];
     }
