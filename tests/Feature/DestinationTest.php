@@ -148,4 +148,54 @@ class DestinationTest extends TestCase
                 ]
                     ]);
     }
+
+    public function test_list_all_destinations_activities():void{
+        
+        Artisan::call('migrate:reset');
+        Artisan::call('migrate');
+        Artisan::call('db:seed');
+
+        $response = $this->get('/api/DestinationsActivities');
+        $response->assertStatus(200)->assertJsonStructure([
+            '*' => [
+                'id',
+                'name',
+                'country',
+                'description',
+                'image',
+                'activities' => [
+                    '*' => [
+                        'id',
+                        'name',
+                        'description',
+                        'type'
+                    ]
+                ]
+            ]
+        ]);
+    }
+
+    public function test_list_destination_activity():void{
+        Artisan::call('migrate:reset');
+        Artisan::call('migrate');
+        Artisan::call('db:seed');
+
+        $response = $this->get('/api/DestinationsActivities/1');
+        $response->assertStatus(200)->assertJsonStructure(['id',
+                'name',
+                'country',
+                'description',
+                'image',
+                'activities' => [
+                    '*' => [
+                        'id',
+                        'name',
+                        'description',
+                        'type'
+                    ]
+                    ]]);
+    }
+
 }
+
+
