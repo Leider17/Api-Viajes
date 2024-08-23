@@ -65,10 +65,15 @@ class DestinationController extends Controller
         $destination = Destination::find($id);
         $destination->update($request->all());
 
-        return response()->json(['success'=>true],200);
+        return response()->json([
+            'success'=>true]
+            ,200);
     }
 
-    public function destroy(){
-
+    public function destroy($id){
+        Destination::find($id)->delete();
+        return response()->json([
+            'success'=>true]
+            ,200);
     }
 }

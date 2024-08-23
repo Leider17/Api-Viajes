@@ -22,4 +22,5 @@ Route::get('/DestinationsActivities',[DestinationController::class,'Destinations
 Route::get('/DestinationsActivities/{destination}',[DestinationController::class,'DestinationActivities'])->name('destinationsactivities.show');
 
 Route::put('/Destinations/{destination}',[DestinationController::class,'update'])->name('destinations.update');
+Route::delete('/Destinations/{destination}',[DestinationController::class,'destroy'])->name('destinations.destroy');
 
