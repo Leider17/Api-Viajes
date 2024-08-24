@@ -51,6 +51,24 @@ class DestinationTest extends TestCase
         ]);
     }
 
+    public function test_delete_destination():void
+    {
+        Artisan::call('migrate:reset');
+        Artisan::call('migrate');
+        Artisan::call('db:seed');
+        
+        $response = $this->delete('/api/Destinations/1');
+        $response->assertStatus(200)
+        ->assertJsonStructure(['success']);
+    }
+
+    public function test_update_destination(): void
+    {
+        Artisan::call('migrate:reset');
+        Artisan::call('migrate');
+        Artisan::call('db:seed');
+    }
+
     public function test_list_all_destinations_comments(): void
     {
         Artisan::call('migrate:reset');
