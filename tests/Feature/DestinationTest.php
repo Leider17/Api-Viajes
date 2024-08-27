@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Artisan;
 use SebastianBergmann\Type\VoidType;
 use Tests\TestCase;
+use App\Models\Destination;
 
 class DestinationTest extends TestCase
 {
@@ -67,6 +68,18 @@ class DestinationTest extends TestCase
         Artisan::call('migrate:reset');
         Artisan::call('migrate');
         Artisan::call('db:seed');
+
+        $destination = Destination::find(1);
+
+        $response=$this->put('/api/Destinations/1',[
+            'name' => 'nametest',
+            'country' => 'countrytest',
+            'description' => 'descriptiontest',
+            'image' => 'imagetest'
+        ]);
+
+        $response->assertStatus(200)
+        ->assertJsonStructure(['success']);
     }
 
     public function test_list_all_destinations_comments(): void
