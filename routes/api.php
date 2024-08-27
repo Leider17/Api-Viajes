@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\UserController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -23,4 +24,6 @@ Route::get('/DestinationsActivities/{destination}',[DestinationController::class
 
 Route::put('/Destinations/{destination}',[DestinationController::class,'update'])->name('destinations.update');
 Route::delete('/Destinations/{destination}',[DestinationController::class,'destroy'])->name('destinations.destroy');
+
+Route::get('users/{user}/reservations',[UserController::class,'userReservations'])->name('users.reservations');
 

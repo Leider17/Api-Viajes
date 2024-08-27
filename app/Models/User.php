@@ -6,8 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use app\Models\Reservation;
-use app\Models\Comment;
+use App\Models\Reservation;
+use App\Models\Comment;
 
 class User extends Authenticatable
 {
