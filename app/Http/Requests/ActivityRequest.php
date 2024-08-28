@@ -22,7 +22,10 @@ class ActivityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            
+        'name'=>'required',
+        'description'=>'required',
+        'type'=>'required',
+        'destination_id'=>'required|exists:destinations,id',
         ];
     }
 }
