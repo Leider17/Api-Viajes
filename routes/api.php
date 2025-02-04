@@ -12,14 +12,16 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+Route::post('/login',[UserController::class,'login'])->name('users.login');
+Route::post('/register', [UserController::class, 'createUser'])->name('users.register');
+
+
 Route::middleware('auth:sactum')->group(function () {
     Route::post('/Destinations', [DestinationController::class, 'store'])->name('destinations.store');
     Route::put('/Destinations/{destination}', [DestinationController::class, 'update'])->name('destinations.update');
     Route::delete('/Destinations/{destination}', [DestinationController::class, 'destroy'])->name('destinations.destroy');
 
-    Route::post('/users', [UserController::class, 'store'])->name('users.store');
-    Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
-    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::post('/createUser', [UserController::class, 'createUser'])->name('users.createUser');
 
     Route::post('/hotels', [HotelController::class, 'store'])->name('hotels.store');
     Route::put('/hotels/{hotel}', [HotelController::class, 'update'])->name('hotels.update');
@@ -36,15 +38,14 @@ Route::middleware('auth:sactum')->group(function () {
 
 Route::get('/Destinations', [DestinationController::class, 'index'])->name('destinations.index');
 Route::get('/Destinations/{destination}', [DestinationController::class, 'show'])->name('destinations.show');
-Route::get('/DestinationsComments', [DestinationController::class, 'DestinationsComments'])->name('destinationscomments.index');
-Route::get('/DestinationsComments/{destination}', [DestinationController::class, 'DestinationComments'])->name('destinationscomments.show');
-Route::get('/DestinationsHotels', [DestinationController::class, 'DestinationsHotels'])->name('destinationshotels.index');
-Route::get('/DestinationsHotels/{destination}', [DestinationController::class, 'DestinationHotels'])->name('destinationshotels.show');
-Route::get('/DestinationsActivities', [DestinationController::class, 'DestinationsActivities'])->name('destinationsactivities.index');
-Route::get('/DestinationsActivities/{destination}', [DestinationController::class, 'DestinationActivities'])->name('destinationsactivities.show');
+Route::get('/Destinations/Comments', [DestinationController::class, 'DestinationsComments'])->name('destinationscomments.index');
+Route::get('/Destinations/{destination}/Comments', [DestinationController::class, 'DestinationComments'])->name('destinationscomments.show');
+Route::get('/Destinations/Hotels', [DestinationController::class, 'DestinationsHotels'])->name('destinationshotels.index');
+Route::get('/Destinations/{destination}/Hotels', [DestinationController::class, 'DestinationHotels'])->name('destinationshotels.show');
+Route::get('/Destinations/Activities', [DestinationController::class, 'DestinationsActivities'])->name('destinationsactivities.index');
+Route::get('/Destinations/{destination}/Activities', [DestinationController::class, 'DestinationActivities'])->name('destinationsactivities.show');
 
-Route::get('/users', [UserController::class, 'index'])->name('users.index');
-Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
+
 Route::get('/users/{user}/reservations', [UserController::class, 'userReservations'])->name('users.reservations');
 
 Route::get('/hotels', [HotelController::class, 'index'])->name('hotels.index');
