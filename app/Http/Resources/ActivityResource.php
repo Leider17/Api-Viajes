@@ -12,6 +12,33 @@ class ActivityResource extends JsonResource
      *
      * @return array<string, mixed>
      */
+
+     /**
+      * @OA\Schema(
+            schema="ActivityResource",
+            type="object",
+            @OA\Property(
+                property="id",
+                type="integer",
+                description="Id of the activity"
+            ),
+            @OA\Property(
+                property="name",
+                type="string",
+                description="Name of the activity"
+            ),
+            @OA\Property(
+                property="description",
+                type="string",
+                description="Description of the activity"
+            ),
+            @OA\Property(
+                property="type",
+                type="string",
+                description="Type of the activity"
+            )
+            )
+      */
     public function toArray(Request $request): array
     {
         return [

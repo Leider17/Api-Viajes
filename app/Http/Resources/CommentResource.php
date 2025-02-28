@@ -12,6 +12,33 @@ class CommentResource extends JsonResource
      *
      * @return array<string, mixed>
      */
+
+     /**
+      * @OA\Schema(
+            schema="CommentResource",
+            type="object",
+            @OA\Property(
+                property="id",
+                type="integer",
+                description="Id of the comment"
+            ),
+            @OA\Property(
+                property="content",
+                type="string",
+                description="Content of the comment"
+            ),
+            @OA\Property(
+                property="user_id",
+                type="integer",
+                description="id of the user related to the comment"
+            ),
+            @OA\Property(
+                property="name_user",
+                type="string",
+                description="Name of the user related to the comment"
+            )
+            )
+      */
     public function toArray(Request $request): array
     {
         return [
