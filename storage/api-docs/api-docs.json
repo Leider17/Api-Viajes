@@ -1,0 +1,1139 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Swagger",
+        "description": "API CRUD viajes",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/activities": {
+            "get": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Obtener listado de actividades",
+                "description": "Devuelve un listado de actividades",
+                "operationId": "53e7a0b67f6097ed90245000764b2e5e",
+                "responses": {
+                    "200": {
+                        "description": "Operacion exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ActivityResource"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Crear nueva actividad",
+                "description": "Crea una nueva actividad",
+                "operationId": "8aa12114961e22767ecdad7c24be367e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ActivityResource"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Actividad creada exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ActivityResource"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/activities/{id}": {
+            "get": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Obtener información de una actividad",
+                "description": "Devuelve los datos de una actividad específica",
+                "operationId": "6d75cdd5535b9b12358448ec198faba4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la actividad",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ActivityResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Actividad no encontrada"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Actualizar actividad existente",
+                "description": "Actualiza los datos de una actividad específica",
+                "operationId": "064379988a5fe2c974ae5ab18f0cddfd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la actividad",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ActivityResource"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Actividad actualizada exitosamente"
+                    },
+                    "404": {
+                        "description": "Actividad no encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Eliminar una actividad",
+                "description": "Elimina una actividad específica",
+                "operationId": "d822403ad9a85feb951b1073858a072d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la actividad",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Actividad eliminada exitosamente"
+                    },
+                    "404": {
+                        "description": "Actividad no encontrada"
+                    }
+                }
+            }
+        },
+        "/api/comments": {
+            "get": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Obtener listado de comentarios",
+                "description": "Devuelve un listado de comentarios",
+                "operationId": "0406f270b674fae17bf23b4206a3004f",
+                "responses": {
+                    "200": {
+                        "description": "Operacion exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/CommentResource"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Crear nuevo comentario",
+                "description": "Crea un nuevo comentario",
+                "operationId": "300619a0a4003920aafe960e45688102",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CommentResource"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Comentario creado exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommentResource"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/comments/{id}": {
+            "get": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Obtener información de un comentario",
+                "description": "Devuelve los datos de un comentario especifico",
+                "operationId": "ca005bcffa22ab29b155dd7aa13b5d6e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del comentario",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommentResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "comentario no encontrado"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Actualizar comentario existente",
+                "description": "Actualiza los datos de un comentario especifico",
+                "operationId": "39e62963cbf897a1b2168683878e0a46",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del comentario",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CommentResource"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Comentario actualizado exitosamente"
+                    },
+                    "404": {
+                        "description": "Comentario no encontrado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Eliminar un comentario",
+                "description": "Elimina un comentario especifico",
+                "operationId": "721e5dc0c32ef81276203df965767606",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del comentario",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Comentario eliminado exitosamente"
+                    },
+                    "404": {
+                        "description": "Comentario no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/Destinations": {
+            "get": {
+                "tags": [
+                    "Destinations"
+                ],
+                "summary": "Obtener listado de destinos",
+                "description": "Devuelve un listado de destinos",
+                "operationId": "dfb9b1094a9d63c02cc986ae99c89bd0",
+                "responses": {
+                    "200": {
+                        "description": "Operacion exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/DestinationResource"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Destinations"
+                ],
+                "summary": "Crear un nuevo destino",
+                "description": "Crea un nuevo destino",
+                "operationId": "63c00d6436c8ed74940996cfd564fc1f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DestinationResource"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Destino creado exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DestinationResource"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/Destinations/Comments": {
+            "get": {
+                "tags": [
+                    "Destinations"
+                ],
+                "summary": "Obtener listado de destinos junto con sus comentarios",
+                "description": "Devuelve un listado de destinos junto con sus comentarios",
+                "operationId": "fb11dbbad0b0b5e6817cb298786debad",
+                "responses": {
+                    "200": {
+                        "description": "Operacion exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/DestinationResource"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Destinations/{id}/Comments": {
+            "get": {
+                "tags": [
+                    "Destinations"
+                ],
+                "summary": "Obtener comentarios de un destino específico",
+                "description": "Devuelve los comentarios relacionados con un destino por su ID",
+                "operationId": "1277001dc680e2babf3ea10feae6d953",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del destino",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DestinationResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Destino no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/Destinations/Hotels": {
+            "get": {
+                "tags": [
+                    "Destinations"
+                ],
+                "summary": "Obtener hoteles de todos los destinos",
+                "description": "Devuelve los hoteles relacionados con todos los destinos",
+                "operationId": "e94d4082524bac8f980fac376a3db455",
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/DestinationHotelResource"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Destinations/{id}/Hotels": {
+            "get": {
+                "tags": [
+                    "Destinations"
+                ],
+                "summary": "Obtener hoteles de un destino específico",
+                "description": "Devuelve los hoteles relacionados con un destino por su ID",
+                "operationId": "1d5ce792559dfc56157449c70f0f886d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del destino",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DestinationHotelResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Destino no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/Destinations/Activities": {
+            "get": {
+                "tags": [
+                    "Destinations"
+                ],
+                "summary": "Obtener actividades de todos los destinos",
+                "description": "Devuelve las actividades relacionadas con todos los destinos",
+                "operationId": "747849cf171739eb9d850866921a7ed5",
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/DestinationActivityResource"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Destinations/{id}/Activities": {
+            "get": {
+                "tags": [
+                    "Destinations"
+                ],
+                "summary": "Obtener hoteles de un destino específico",
+                "description": "Devuelve los hoteles relacionados con un destino por su ID",
+                "operationId": "e595d2280ac44bd4e3aeab987d07f8c3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del destino",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DestinationHotelResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Destino no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/Destinations/{id}": {
+            "get": {
+                "tags": [
+                    "Destinations"
+                ],
+                "summary": "Obtener información de un destino",
+                "description": "Devuelve los datos de un destino especifico",
+                "operationId": "beee4d76c075a9019fd805a7d157e49e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del destino",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DestinationResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Destino no encontrado"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Destinations"
+                ],
+                "summary": "Actualizar destino existente",
+                "description": "Actualiza los datos de un destino específico",
+                "operationId": "dc47acfc5f7aca570c1e46bd3a2afb8e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del destino",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DestinationResource"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Destino actualizado exitosamente"
+                    },
+                    "404": {
+                        "description": "Destino no encontrado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Destinations"
+                ],
+                "summary": "Eliminar un destino",
+                "description": "Elimina un destino específico",
+                "operationId": "095a0a986c1f5f27f53eb88d9b1c189a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del destino",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Destino eliminado exitosamente"
+                    },
+                    "404": {
+                        "description": "Destino no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/hotels": {
+            "get": {
+                "tags": [
+                    "Hotels"
+                ],
+                "summary": "Obtener listado de hoteles",
+                "description": "Devuelve un listado de hoteles",
+                "operationId": "1f059609a9a7cdebad01e8494549cc8d",
+                "responses": {
+                    "200": {
+                        "description": "Operacion exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/HotelResource"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Hotels"
+                ],
+                "summary": "Crear nuevo hotel",
+                "description": "Crea un nuevo hotel",
+                "operationId": "c8f412836761802038a38f7c95ad6c9e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/HotelResource"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "hotel creado exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HotelResource"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/hotels/{id}": {
+            "get": {
+                "tags": [
+                    "Hotels"
+                ],
+                "summary": "Obtener información de un hotel",
+                "description": "Devuelve los datos de un hotel específico",
+                "operationId": "32fa458e73403c0f53352a6162667196",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del hotel",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operación exitosa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HotelResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Hotel no encontrado"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Hotels"
+                ],
+                "summary": "Actualizar hotel existente",
+                "description": "Actualiza los datos de un hotel especifico",
+                "operationId": "05f1700e0699e62ac666298252adb116",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del hotel",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/HotelResource"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "hotel actualizado exitosamente"
+                    },
+                    "404": {
+                        "description": "Hotel no encontrado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Hotels"
+                ],
+                "summary": "Eliminar un hotel",
+                "description": "Elimina un hotel especifico",
+                "operationId": "d7cc9d4ced4fee467530e2b4017bc6c6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del hotel",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "hotel eliminado exitosamente"
+                    },
+                    "404": {
+                        "description": "hotel no encontrado"
+                    }
+                }
+            }
+        },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Crear nuevo usuario",
+                "description": "Crea un nuevo usuario",
+                "operationId": "cb4611cd67d9ef95ec763cad19bda66f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserResource"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "usuario creado exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResource"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Iniciar sesión",
+                "operationId": "e50d4253c7a9cef3ce2fc45ee80172aa",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "johndoe@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "password123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Inicio de sesión exitoso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "access_token": {
+                                            "type": "string",
+                                            "example": "1|xyz1234abcd"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Credenciales inválidas"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ActivityResource": {
+                "properties": {
+                    "id": {
+                        "description": "Id of the activity",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Name of the activity",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description of the activity",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "Type of the activity",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CommentResource": {
+                "properties": {
+                    "id": {
+                        "description": "Id of the comment",
+                        "type": "integer"
+                    },
+                    "content": {
+                        "description": "Content of the comment",
+                        "type": "string"
+                    },
+                    "user_id": {
+                        "description": "id of the user related to the comment",
+                        "type": "integer"
+                    },
+                    "name_user": {
+                        "description": "Name of the user related to the comment",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "DestinationActivityResource": {
+                "title": "Destination Activity Resource",
+                "description": "Estructura del recurso de destino",
+                "properties": {
+                    "id": {
+                        "description": "ID del destino",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Nombre del destino",
+                        "type": "string"
+                    },
+                    "country": {
+                        "description": "País del destino",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Descripción del destino",
+                        "type": "string"
+                    },
+                    "image": {
+                        "description": "URL de la imagen del destino",
+                        "type": "string"
+                    },
+                    "activities": {
+                        "description": "actividades asociadas al destino",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/HotelResource"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "DestinationHotelResource": {
+                "title": "Destination Hotel Resource",
+                "description": "Estructura del recurso de destino",
+                "properties": {
+                    "id": {
+                        "description": "ID del destino",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Nombre del destino",
+                        "type": "string"
+                    },
+                    "country": {
+                        "description": "País del destino",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Descripción del destino",
+                        "type": "string"
+                    },
+                    "image": {
+                        "description": "URL de la imagen del destino",
+                        "type": "string"
+                    },
+                    "hotels": {
+                        "description": "hoteles asociados al destino",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/HotelResource"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "DestinationResource": {
+                "title": "Destination Resource",
+                "description": "Estructura del recurso de destino",
+                "properties": {
+                    "id": {
+                        "description": "ID del destino",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Nombre del destino",
+                        "type": "string"
+                    },
+                    "country": {
+                        "description": "País del destino",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Descripción del destino",
+                        "type": "string"
+                    },
+                    "image": {
+                        "description": "URL de la imagen del destino",
+                        "type": "string"
+                    },
+                    "comments": {
+                        "description": "Comentarios asociados al destino",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CommentResource"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "HotelResource": {
+                "title": "Hotel Resource",
+                "description": "Estructura del recurso de hotel",
+                "properties": {
+                    "id": {
+                        "description": "ID del hotel",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Nombre del hotel",
+                        "type": "string"
+                    },
+                    "adress": {
+                        "description": "direccion del hotel",
+                        "type": "string"
+                    },
+                    "price_night": {
+                        "description": "Precio por noche en el destino",
+                        "type": "number",
+                        "format": "float"
+                    }
+                },
+                "type": "object"
+            },
+            "UserResource": {
+                "title": "User Resource",
+                "description": "Estructura del recurso de usuario",
+                "properties": {
+                    "id": {
+                        "description": "ID del usuario",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Nombre del usuario",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "Correo electronico del usuario",
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "password": {
+                        "description": "contraseña de acceso del usuario",
+                        "type": "string",
+                        "format": "password"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Activities",
+            "description": "Activities"
+        },
+        {
+            "name": "Comments",
+            "description": "Comments"
+        },
+        {
+            "name": "Destinations",
+            "description": "Destinations"
+        },
+        {
+            "name": "Hotels",
+            "description": "Hotels"
+        },
+        {
+            "name": "Users",
+            "description": "Users"
+        },
+        {
+            "name": "Auth",
+            "description": "Auth"
+        }
+    ]
+}
