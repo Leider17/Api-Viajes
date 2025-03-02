@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Artisan;
 use SebastianBergmann\Type\VoidType;
 use Tests\TestCase;
 use App\Models\Destination;
+use App\Models\User;
 
 class DestinationTest extends TestCase
 {
@@ -19,7 +20,7 @@ class DestinationTest extends TestCase
         Artisan::call('migrate:reset');
         Artisan::call('migrate');
         Artisan::call('db:seed');
-        $response = $this->get('/api/Destinations');
+        $response = $this->get('/api/destinations');
 
         $response->assertStatus(200)->assertJsonStructure([
 
@@ -40,7 +41,7 @@ class DestinationTest extends TestCase
         Artisan::call('migrate:reset');
         Artisan::call('migrate');
         Artisan::call('db:seed');
-        $response = $this->get('/api/Destinations/1');
+        $response = $this->get('/api/destinations/1');
         $response->assertStatus(200)->assertJsonStructure([
                 'id',
                 'name',
@@ -52,13 +53,41 @@ class DestinationTest extends TestCase
         ]);
     }
 
+    public function test_create_destination():void{
+        Artisan::call('migrate:reset');
+        Artisan::call('migrate');
+        Artisan::call('db:seed');
+
+        $user = User::factory()->create();
+        $this->actingAs($user, 'sanctum');
+        
+        $response=$this->post('/api/destinations',[
+            'name' => 'nameDestination',
+            'country' => 'Colombia',
+            'description' => 'descriptionDestination',
+            'image' => 'image.png'
+        ]);
+        
+         $response->assertStatus(201)->assertJson([
+            'success' => true,
+            'data' => [
+                'name' => 'nameDestination',
+                'country' => 'Colombia',
+                'description' => 'descriptionDestination',
+                'image' => 'image.png'
+    ]]);
+    }
+
     public function test_delete_destination():void
     {
         Artisan::call('migrate:reset');
         Artisan::call('migrate');
         Artisan::call('db:seed');
-        
-        $response = $this->delete('/api/Destinations/1');
+
+        $user = User::factory()->create();
+        $this->actingAs($user, 'sanctum');
+
+        $response = $this->delete('/api/destinations/1');
         $response->assertStatus(200)
         ->assertJsonStructure(['success']);
     }
@@ -68,10 +97,13 @@ class DestinationTest extends TestCase
         Artisan::call('migrate:reset');
         Artisan::call('migrate');
         Artisan::call('db:seed');
+        
+        $user = User::factory()->create();
+        $this->actingAs($user, 'sanctum');
 
         $destination = Destination::find(1);
 
-        $response=$this->put('/api/Destinations/1',[
+        $response=$this->put('/api/destinations/1',[
             'name' => 'nametest',
             'country' => 'countrytest',
             'description' => 'descriptiontest',
@@ -88,7 +120,7 @@ class DestinationTest extends TestCase
         Artisan::call('migrate');
         Artisan::call('db:seed');
 
-        $response = $this->get('/api/DestinationsComments');
+        $response = $this->get('/api/destinations/comments');
         $response->assertStatus(200)->assertJsonStructure([
             '*' => [
                 'id',
@@ -113,7 +145,7 @@ class DestinationTest extends TestCase
         Artisan::call('migrate');
         Artisan::call('db:seed');
 
-        $response = $this->get('/api/DestinationsComments/1');
+        $response = $this->get('/api/destinations/1/comments');
         $response->assertStatus(200)->assertJsonStructure([
                 'id',
                 'name',
@@ -137,7 +169,7 @@ class DestinationTest extends TestCase
         Artisan::call('migrate');
         Artisan::call('db:seed');
 
-        $response = $this->get('/api/DestinationsHotels');
+        $response = $this->get('/api/destinations/hotels');
         $response->assertStatus(200)->assertJsonStructure([
             '*' => [
                 'id',
@@ -162,7 +194,7 @@ class DestinationTest extends TestCase
         Artisan::call('migrate');
         Artisan::call('db:seed');
 
-        $response = $this->get('/api/DestinationsHotels/1');
+        $response = $this->get('/api/destinations/1/hotels');
         $response->assertStatus(200)->assertJsonStructure([
                 'id',
                 'name',
@@ -186,7 +218,7 @@ class DestinationTest extends TestCase
         Artisan::call('migrate');
         Artisan::call('db:seed');
 
-        $response = $this->get('/api/DestinationsActivities');
+        $response = $this->get('/api/destinations/activities');
         $response->assertStatus(200)->assertJsonStructure([
             '*' => [
                 'id',
@@ -211,7 +243,7 @@ class DestinationTest extends TestCase
         Artisan::call('migrate');
         Artisan::call('db:seed');
 
-        $response = $this->get('/api/DestinationsActivities/1');
+        $response = $this->get('/api/destinations/1/activities');
         $response->assertStatus(200)->assertJsonStructure(['id',
                 'name',
                 'country',
